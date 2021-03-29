@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART HEALTH</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .container{
+            /* background-color: red; */
+            width: 100%;
+            min-height: 20%;
+        }
+        header{
+            min-height: 10%;
+            background-color:rgba(255, 166, 0, 0.507);
+        }
+        body, html {
+          height: 100%;
+          background-color:rgba(201, 199, 199, 0.226);
+        }
+.bg-image {
+  /* The image used */
+  background-image: url("https://geospatialmedia.s3.amazonaws.com/wp-content/uploads/2018/12/Smart-Healthcare-831x420.jpg");
+
+  /* Add the blur effect */
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+  /* Full height */
+  height: 50%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+/* .logo-image{
+    width:46px;
+    height:46px;
+    border-radius: 0%;
+    overflow: hidden;
+    margin-top: -6px;
+} */
+</style>
+</head>
+<body>
+    <header style="min-height: 0%;">
+        <div class="container">
+            <nav>
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                      </button>
+                      <!-- <a class="navbar-brand" href="#">
+                        <div class="logo-image">
+                          <img src="https://lh3.googleusercontent.com/proxy/lF0xiEh7LIO1NOuV7kceAnH1fP1QHuTYkPRRE-_5BDcnzK-cLGHES7mNuseGs7W1jzzvIFqC8nR7NQCFeFAila2fyPNyjYnm4Hjf15k4RqXY" class="img-fluid">
+                        </div>
+                      </a> -->
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                      <ul class="nav navbar-nav" style="font-size:medium;">
+                        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Devices</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Contact</a></li>
+                      </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>   
+    </header>
+    {% block content %}
+    <div class="container" style="min-height:10%;">
+       <nav>
+                  {% if user.is_authenticated %}
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'logout' %}" ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'dashboard' %}"><span class="glyphicon glyphicon-book"></span> Dashboard</a></li>
+                  </ul>
+                  {% else %}
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'login_url' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'register_url' %}" ><span class="glyphicon glyphicon-copy"></span> Register</a></li>
+                  </ul>
+                 {% endif %}   
+        </nav>
+    </div>
+    <div class="bg-image"></div>
+
+    <div class="bg-text">
+      <h1><b>Smart Health Monitoring</b></h1>
+      <p><b>We Take Your Health Seriously</b></p>
+    </div>
+    {% endblock %}
+</body>
+</html>

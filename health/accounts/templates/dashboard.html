@@ -1,0 +1,173 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    
+
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #19c5cf;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+}    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+    .col-sm-2
+    {
+      width:33.33%;
+      right: 0;
+    }
+
+
+  </style>
+</head>
+<body>
+    {% block content %}
+    <div class="container" style="min-height:10%;">
+      <nav>
+                {% if user.is_authenticated %}
+                 <ul class="nav navbar-nav navbar-right">
+                  <li><h3><u>Welcome , {{user.username}}</u></h3></li> 
+                  <li><a href="{% url 'logout' %}" ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                 </ul>
+                {% endif %}
+      </nav>
+    </div>
+    <h1>Dashboard</h1>
+    <div class="container" style="width: 100%;">
+        <div class="container-fluid text-center">    
+      <div class="row content">
+        <div class="col-sm-8 text-left"> 
+        <hr>
+          <h3>Users and Devices</h3>
+          <table class='table table-hover'>
+            <caption> Condition Table </caption>
+            <tr>
+              <th>Gate_No</th>
+              <th>Thermometer_Id</th>
+              <th>Thermometer_Status</th>
+              <th>Thermometer_last_active</th>
+              <th>Oximeter_Id</th>
+              <th>Oximeter_Status</th>
+              <th>Oximeter_last_active</th>
+            </tr>
+            <!-- {% for i in data %}
+            <tr>
+              <td>{{i.Gate_No}}</td>
+              <td>{{i.Thermometer_Id}}</td>
+              <td>{{i.Thermometer_Status}}</td>
+              <td>{{i.Thermometer_last_active}}</td>
+              <td>{{i.Oximeter_Id}}</td>
+              <td>{{i.Oximeter_Status}}</td>
+              <td>{{i.Oximeter_last_active}}</td>
+            </tr>
+            {% endfor %} -->
+              <tr class='success'>
+                <td> 01 </td>
+                <td> 89076 </td>
+                <td> Working</td>
+                <td> Now </td>
+                <td> 2345 </td>
+                <td> Working</td>
+                <td> Now</td>
+              </tr>
+              <tr class='success'>
+                <td> 02 </td>
+                <td> 89076 </td>
+                <td> working</td>
+                <td> now </td>
+                <td> 45667</td>
+                <td> Working </td>
+                <td> Now </td>
+              </tr>
+              <tr class='danger'>
+                <td> 03 </td>
+                <td> 89077 </td>
+                <td> Not Working </td>
+                <td> 19/03/21 08:21 </td>
+                <td> 2398 </td>
+                <td> Working </td>
+                <td> Now </td>
+              </tr>
+            </table>
+        </div>
+        <div class="col-sm-2 sidenav" style="width: 33.33%;">
+          <p><h4>ALERTS</h4></p>
+          <div class="well">
+            <P> <b>Type:</b> Oximeter - Abnormal Reading<br>
+                <b>Info:</b> Oximeter Reading at Device #2345 for Id 1234 - Abnormal</P> 
+          </div>
+          <div class="well">
+            <P> <b>Type:</b> Device Disconnected <br>
+                <b>Info:</b> Device #23921 got Disconnected at time 13:06 </P> 
+          </div>
+            <table class='table table-hover'>
+              <caption> Recent Alerts </caption>
+              <tr>
+                <th>S.no</th>
+                <th>Alert</th>
+                <th>Device Id</th>
+                <th>Time</th>
+              </tr>
+              <tr class='warning'>
+                <td> 1 </td>
+                <td> Device Disconnected </td>
+                <td> 89076 </td>
+                <td> 21:23 </td>
+              </tr>
+              <tr class='danger'>
+                <td> 2 </td>
+                <td> Abnormal Oximeter </td>
+                <td> 12345 </td>
+                <td> 16:22 </td>
+              </tr>
+            </table>
+          </div>
+      </div>
+    </div>
+    </div>
+<footer class="container-fluid text-center">
+  Some footer text!!
+</footer>
+{% endblock %}
+</body>
+</html>
+<script>
+  var data=JSON.parse("{{dataJson|escapejs}}");
+</script>
