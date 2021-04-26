@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style/AboutUs.css">
+    </head>
+    <body>
+        {% block content %}
+        <div class="text-justify m-5 p-5" style="font-size: 1.5rem;">
+            <h1 id="heading" class="text-danger" style="font-size: 3.5rem;">Smart Campus</h1>
+            <div class="text-justify">
+                <p>
+                    In this epoch of technology, automation, where the internet has a salient role, replaces manual
+                    systems to make human life simpler. The foundation to this project is the Internet of
+                    Things(IoT) offering control over connected devices across a network infrastructure. The
+                    designed system can be expanded by controlling different devices which makes it
+                    economically scalable.
+                </p>
+                <p>
+                    Project Athena is conceived as a collaborative R&D project with specific intent to
+                    commercialize and put to application in Smart Cities, towns/townships, apartment complexes,
+                    gated communities and institutional or corporate campuses. ACS Technologies Ltd is leading
+                    the project in collaboration with industry partners and has collaborated with leading
+                    Academic Institutions mentoring over 50+ students since 2017, across B.Tech ECE/CSE and
+                    MTech Data Science streams. Current batch of GITAM is 12 students in 3 teams.
+                </p>
+                <p>
+                    As Smart Campus is not only about software development but also the entire system
+                    development as Smart Buildings , Smart Energy and Smart Safety , focussing on to develop
+                    each and every entity within campuses.
+                </p>
+            </div>
+        </div>
+        <!--Cards: intro to each module-->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner text-center">
+                <div class="carousel-item active box1">
+                    <div class="details">
+                      <h2>Smart Health Monitoring System</h2>
+                      <p>Smart health monitoring devices determine the health condition i.e. rate of the pulse, body temperature, respiratory rate, blood glucose rate,and other things by using sensors. The microcontroller collects the data using sensors.</p><br>
+                      <a><button type="button" class="btn btn-primary m-0">Check Now</button></a>
+                    </div>
+                    <div class="illustration"><div class="inner"></div></div>
+                </div>
+                <div class="carousel-item box2">
+                    <div class="details">
+                      <h2>Smart Water Monitoring System</h2>
+                      <p>Energyly water monitoring system help campus to address their wide range of challenges from water monitoring, leakage detection, pressure management.</p>
+                      <a><button type="button" class="btn btn-primary">Check Now</button></a>
+                    </div>
+                </div>
+                <div class="carousel-item box3">
+                    <div class="details">
+                      <h2>Smart Building Monitoring System</h2>
+                      <p>Smart Building monitoring devices use IoT sensors, software connectivity to monitor various building characteristics, analyze and generate insights around usage patterns and trends that can be used to optimize the building's environment and operations.</p>
+                      <a><button type="button" class="btn btn-primary">Check Now</button></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <script src="" async defer></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% endblock %}
+    </body>
+</html>

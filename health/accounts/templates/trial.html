@@ -1,0 +1,107 @@
+
+
+
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    
+    
+
+</head>
+
+
+<body>
+ {% block content %}
+               
+        <div class="container tm-container-2" style="margin-left: 180px;">
+            
+            <div class="row tm-section-mb">
+                <div class="col-lg-12">
+                    <div class=" tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            <div class="icon">
+
+                                <img src="{% static 'cctv.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div> CCTV Camera </div>
+                            </div>
+                        </div>
+                    </div>
+                            
+                            
+                    <div class="tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            <div class="icon">
+
+                            <img src="{% static 'panic_button.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                            <div> Panic Button </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+
+                    <div class="tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            <div class="icon">
+
+                            <img src="{% static 'oxi.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                            <div> Pulse Oximeter </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                    <div class=" tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            &emsp;&emsp;&emsp;
+                            <div class="icon">
+                                
+                            #    <a href="{% url 'thermo' %}">
+                            #    <img src="{% static 'thermal.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline"></a>
+                                <div> Thermal Scanner </div>
+                        </div>
+                            
+                            
+                   
+
+                    <div class="tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            <div class="icon">
+                            #    <img src="{% static 'fire.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                            <div> Smoke Detector </div>
+                        </div>
+                            </div>
+                        </div>
+                        
+
+                    <div class="tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            <div class="icon">
+
+                            <img src="{% static 'combustible.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                            <div> Combustible Gases </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            
+        
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/templatemo-script.js' %}"></script>
+{% endblock %}
+</body>
+</html>

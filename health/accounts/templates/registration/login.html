@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +11,41 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+{% load static %}
+
+{% block stylesheets %} <link rel="stylesheet"  href="{% static 'login.css' %}">{% endblock %}
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <style>
 </style>
 </head>
+
+
+
+
 <body>
 {% block content %}
     <!-- <h1>System Login</h1> -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
-                <div class="panel-body">
+                <div class="panel-body"> -->
+        <div class="container">
+        <div class="my-card">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="myRightCtn">
+                        <div class="box">
+                            <img src="https://p7.hiclipart.com/preview/190/636/1/real-estate-logo-building-apartment-design-thumbnail.jpg" class="border rounded-circle" style="width: 5rem; height: 5rem;">
+                            <h2>Smart Health Monitoring</h2>
+                            <div><b style="color: #fff;">Iot promises to introduce predictive analytics and smart decision making in the EHS industry. <i>'Smart health monitoring'</i> uses one of such advanced technology to enhance student life and to automate robustic work</b></div>
+                            <!--<input type="button" class="butt_out" value="Learn More"/>-->
+                            <button type="submit" class="butt_out"><a href="C:\Users\sweet home\Desktop\New folder\ACS\AboutUs.html" class="text-white" style="text-decoration: none;">Learn more</a></button>
+                        </div>
+                    </div>
+                </div>
                     <form method="POST">
                         {% csrf_token %}
                         {{form.as_p}}
@@ -31,8 +53,12 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>  
+        </div>  
 {% endblock %}
 </body>
 </html>
+
+
+
+
+

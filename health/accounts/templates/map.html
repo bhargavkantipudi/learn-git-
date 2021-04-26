@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Custom Markers</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEpxxWJbin5SqgUtX6-cFrlB0ppvJzido&callback=initMap"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+        
+      let map;
+
+      function initMap() {
+        var data = JSON.parse("{{dataJson|escapejs}}"); 
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: new google.maps.LatLng(17.5505,78.1656),
+          mapTypeId: 'satellite'
+        });
+        const iconBase = 
+          "http://maps.google.com/mapfiles/kml/shapes/";
+        const icons = {
+          camera: {
+            icon: iconBase + "camera.png",
+          },
+        };
+        
+        const features = [];
+        
+        for (index = 0; index < data.length; index++) { 
+            //console.log(data[index]);
+            var tempobj= new Object()
+            tempobj.position=new google.maps.LatLng(data[index].Latitude,data[index].Longitude)
+            tempobj.type="camera"
+            tempobj.content=data[index].Camera_Name
+            features.push(tempobj)
+        }
+        markers=[];
+        function addMarker(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            label:feature.content,
+            map: map
+          });
+		  // since not every feature has content, only add infoWindow when content exist
+		  if(feature.content){
+			  var marker_infoWindow = new google.maps.InfoWindow({
+				content: feature.content
+			  });
+
+			  marker.addListener('click', function() {
+				marker_infoWindow.open(map, marker);
+			  });
+		  }
+          markers.push(marker)
+        }
+        for (var i = 0, feature; feature = features[i]; i++) {
+          addMarker(feature);
+        }
+        function find_closest_marker( lat1, lon1 ) {    
+            var pi = Math.PI;
+            var R = 6371; //equatorial radius
+            var distances = [];
+            var closest = -1;
+
+            for( i=0;i<markers.length; i++ ) {  
+                var lat2 = markers[i].position.lat();
+                var lon2 = markers[i].position.lng();
+
+                var chLat = lat2-lat1;
+                var chLon = lon2-lon1;
+
+                var dLat = chLat*(pi/180);
+                var dLon = chLon*(pi/180);
+
+                var rLat1 = lat1*(pi/180);
+                var rLat2 = lat2*(pi/180);
+
+                var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                            Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(rLat1) * Math.cos(rLat2); 
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+                var d = R * c;
+
+                distances[i] = d;
+                if ( closest == -1 || d < distances[closest] ) {
+                    closest = i;
+                }
+            }
+
+            // (debug) The closest marker is:
+            //console.log(markers[closest]);
+            return markers[closest]
+        }
+        let infoWindow = new google.maps.InfoWindow({
+          content: "Click the map to get Neareast cam",
+          position: new google.maps.LatLng(17.5505,78.1656),
+        });
+        infoWindow.open(map);
+        map.addListener("click", (mapsMouseEvent) => {
+          // Close the current InfoWindow.
+          // Create a new InfoWindow.
+          infoWindow.close();
+
+          latlog=mapsMouseEvent.latLng.toJSON()
+          markerdata=find_closest_marker(latlog.lat,latlog.lng)
+          console.log(markerdata.position);
+          
+          infoWindow = new google.maps.InfoWindow({
+            position: markerdata.position,
+          });
+          infoWindow.setContent(
+            JSON.stringify(markerdata.label, null, 2)
+          );
+          infoWindow.open(map);
+        }); 
+    
+    }
+        
+    </script>
+  </head>
+  <body>
+      Hello
+    <div id="map"></div>
+  </body>
+</html>
